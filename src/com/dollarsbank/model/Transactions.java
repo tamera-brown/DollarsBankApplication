@@ -15,14 +15,14 @@ public class Transactions {
 	private Double transactionAmount;
     private LocalDate transactionDate;
     private AccountType accType;
-    private Integer accountNum;
+    private Long accountNum;
     private TransactionType transType;
     
     public Transactions() {
-    	this(0.0,LocalDate.now(),AccountType.CHECKING,-999,TransactionType.DEPOSIT);
+    	this(0.0,LocalDate.now(),AccountType.CHECKING,0L,TransactionType.DEPOSIT);
     }
 
-	public Transactions(Double transactionAmount, LocalDate transactionDate, AccountType accType,Integer accNum,
+	public Transactions(Double transactionAmount, LocalDate transactionDate, AccountType accType,Long accNum,
 			TransactionType transType) {
 		super();
 		this.transactionAmount = transactionAmount;
@@ -56,12 +56,12 @@ public class Transactions {
 		this.accType = accType;
 	}
 
-	public Integer getAccountNum() {
+	public Object getAccountNum() {
 		return accountNum;
 	}
 
-	public void setAccountNum(Integer accountNum) {
-		this.accountNum = accountNum;
+	public void setAccountNum(Long accNum) {
+		this.accountNum = accNum;
 	}
 
 	public TransactionType getTransType() {

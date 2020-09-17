@@ -13,7 +13,7 @@ public class Customer implements Serializable{
  private String Name;
  private String Address;
  private String Phonenum;
- private Integer customerId=1;
+ private String customerId;
  private String Password;
  private Double Initamount;
  private Stack<Transactions> transactions;
@@ -21,11 +21,11 @@ public class Customer implements Serializable{
  
 
 public Customer() {
-  this("N/A","N/A","N/A",-999,"N/A",0.0, new Stack<Transactions>(), new HashMap<Long, Account>());
+  this("N/A","N/A","N/A","N/A","N/A",0.0, new Stack<Transactions>(), new HashMap<Long, Account>());
 }
 
 
-public Customer(String name, String address, String phonenum, Integer customerId, String password, Double initamount,
+public Customer(String name, String address, String phonenum, String customerId, String password, Double initamount,
 		Stack<Transactions> transactions, HashMap<Long, Account> accounts) {
 	super();
 	this.Name = name;
@@ -69,12 +69,12 @@ public void setPhonenum(String phonenum) {
 }
 
 
-public Integer getCustomerId() {
+public String getCustomerId() {
 	return customerId;
 }
 
 
-public void setCustomerId(Integer customerId) {
+public void setCustomerId(String customerId) {
 	this.customerId = customerId;
 }
 

@@ -10,17 +10,17 @@ public class Account implements Serializable {
 		CHECKING, SAVINGS
 	}
 	
-	private Integer accountNum;
-	private Integer customerId;
+	private Long accountNum;
+	private String customerId;
 	private double balance;
 	private AccountType acctype;
 	
 	public Account() {
 		// TODO Auto-generated constructor stub
-		this(-999,-999,0.0,AccountType.CHECKING);
+		this(0L,"N/A",0.0,AccountType.CHECKING);
 	}
 
-	public Account(int accountNum, int customerId, double balance, AccountType acctype) {
+	public Account(Long accountNum, String customerId, double balance, AccountType acctype) {
 		// TODO Auto-generated constructor stub
 		super();
 		this.accountNum=accountNum;
@@ -29,19 +29,19 @@ public class Account implements Serializable {
 		this.acctype=acctype;
 	}
 
-	public Integer getAccountNum() {
+	public Long getAccountNum() {
 		return accountNum;
 	}
 
-	public void setAccountNum(Integer accountNum) {
+	public void setAccountNum(Long accountNum) {
 		this.accountNum = accountNum;
 	}
 
-	public Integer getCustomerId() {
+	public String getCustomerId() {
 		return customerId;
 	}
 
-	public void setCustomerId(Integer customerId) {
+	public void setCustomerId(String customerId) {
 		this.customerId = customerId;
 	}
 
