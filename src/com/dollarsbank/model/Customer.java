@@ -1,6 +1,8 @@
 package com.dollarsbank.model;
 
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Stack;
 
 public class Customer implements Serializable{
 
@@ -11,24 +13,29 @@ public class Customer implements Serializable{
  private String Name;
  private String Address;
  private String Phonenum;
- private String UserId;
+ private Integer customerId=1;
  private String Password;
  private Double Initamount;
+ private Stack<Transactions> transactions;
+ private HashMap<Long, Account> accounts;
  
 
 public Customer() {
-  this("N/A","N/A","N/A","N/A","N/A",0.0);
+  this("N/A","N/A","N/A",-999,"N/A",0.0, new Stack<Transactions>(), new HashMap<Long, Account>());
 }
 
 
-public Customer(String Name, String Address, String Phonenum, String UserId, String Password, double Initamount) {
-	// TODO Auto-generated constructor stub
-	this.Name=Name;
-	this.Address=Address;
-	this.Phonenum=Phonenum;
-	this.UserId=UserId;
-	this.Password=Password;
-	this.Initamount=Initamount;
+public Customer(String name, String address, String phonenum, Integer customerId, String password, Double initamount,
+		Stack<Transactions> transactions, HashMap<Long, Account> accounts) {
+	super();
+	this.Name = name;
+	this.Address = address;
+	this.Phonenum = phonenum;
+	this.customerId = customerId;
+	this.Password = password;
+	this.Initamount = initamount;
+	this.transactions = transactions;
+	this.accounts = accounts;
 }
 
 
@@ -62,13 +69,13 @@ public void setPhonenum(String phonenum) {
 }
 
 
-public String getUserId() {
-	return UserId;
+public Integer getCustomerId() {
+	return customerId;
 }
 
 
-public void setUserId(String userId) {
-	UserId = userId;
+public void setCustomerId(Integer customerId) {
+	this.customerId = customerId;
 }
 
 
@@ -92,10 +99,33 @@ public void setInitamount(Double initamount) {
 }
 
 
+public Stack<Transactions> getTransactions() {
+	return transactions;
+}
+
+
+public void setTransactions(Stack<Transactions> transactions) {
+	this.transactions = transactions;
+}
+
+
+public HashMap<Long, Account> getAccounts() {
+	return accounts;
+}
+
+
+public void setAccounts(HashMap<Long, Account> accounts) {
+	this.accounts = accounts;
+}
+
+
 @Override
 public String toString() {
-	return "Customer [Name=" + Name + ", Address=" + Address + ", Phonenum=" + Phonenum + ", UserId=" + UserId
-			+ ", Password=" + Password + ", Initamount=" + Initamount + "]";
+	return "Customer [Name=" + Name + ", Address=" + Address + ", Phonenum=" + Phonenum + ", customerId=" + customerId
+			+ ", Password=" + Password + ", Initamount=" + Initamount + ", transactions=" + transactions + ", accounts="
+			+ accounts + "]";
 }
+
+
 
 }
