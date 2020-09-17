@@ -62,7 +62,7 @@ public static void createAccount(Scanner info) {
               accounts.put(Newaccount.getAccountNum(), Newaccount);
               Newtransaction.setTransactionAmount(initamount);
               transactions.push(Newtransaction);
-            //TODO must change that if statement on "Initial Deposit Amount" to put into proper account
+            
               Customer newCustomer = new Customer(name, address, phonenum, customerId, password, initamount, transactions, accounts);
               System.out.println(newCustomer);
               System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------");
