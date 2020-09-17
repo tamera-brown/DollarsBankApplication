@@ -76,26 +76,26 @@ public static void createAccount(Scanner info) {
           
 
 
-public static void login(Scanner sc) {
-    sc = new Scanner(System.in);
-    String customerId = "";
-    String password = "";
+public static void login(Scanner info) {
+    info = new Scanner(System.in);
+    String customerId;
+    String password;
     System.out.println("User Id: ");
     
-        customerId = sc.nextLine();
+        customerId = info.nextLine();
     
     System.out.println("Password: ");
    
-        password = sc.nextLine();
+        password = info.nextLine();
     
-        if(!customers.containsKey(customerId)) {
+        if(!customers.containsKey(customerId) || (!customers.containsKey(password))) {
             System.out.println("Invalid Credentials. Try again!");
         } else {
             Customer found = customers.get(customerId);
             if(!password.equals(found.getPassword())) {
                 System.out.println("Invalid Password. Try again!");
             } else {
-            		DollarsBankApplication.CustomerMenu(sc);
+            		DollarsBankApplication.CustomerMenu(info);
             }
 
     
