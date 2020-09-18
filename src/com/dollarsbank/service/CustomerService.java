@@ -86,8 +86,8 @@ public static void createAccount(Scanner info) {
               transactions.push(Newtransaction);
             
               Customer newCustomer = new Customer(name, address, phonenum, customerId, password, initamount, transactions, accounts);
-              System.out.println(newCustomer);
-              System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------");
+             // System.out.println(newCustomer);
+              
 
               customers.put(newCustomer.getCustomerId(), newCustomer);
               System.out.println("Account Successually Created! ");
@@ -212,6 +212,9 @@ public static void recentTransactions() {
 for(int i=0;i < 5;i++) {
 	System.out.println(transactions.get(i));
 }
+}
+public static void CustomerInfo() {
+	System.out.println(customers);
 }
 }
 

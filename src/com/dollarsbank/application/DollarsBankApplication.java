@@ -67,8 +67,8 @@ public class DollarsBankApplication {
 				            
 	
 		System.out.println("1.Deposit Amount\n2.Withdraw Amount\n3.Funds Transfer"
-				+ "\n4.View 5 recent transactions\n6.Sign Out");
-		 System.out.println("Enter choice (1, 2, 3, 4, 5 or 6)");
+				+ "\n4.view 5 recent transactions\n5. view customer info\n6.Sign Out");
+		 System.out.println("Enter choice (1, 2, 3, 4, 5, or 6)");
 		 
 	        choice = option.nextInt();
 	        switch (choice) {
@@ -82,6 +82,10 @@ public class DollarsBankApplication {
 	        	break;
 	        case 4:
 	        	CustomerService.recentTransactions();
+	        	CustomerMenu(option);
+	           	break;
+	        case 5:
+	        	CustomerService.CustomerInfo();
 	        	CustomerMenu(option);
 	        	break;
 			case 6: 
