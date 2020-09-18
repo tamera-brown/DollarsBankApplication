@@ -5,7 +5,7 @@ import java.util.Scanner;
 import java.util.Stack;
 
 import com.dollarsbank.model.Account;
-import com.dollarsbank.model.Account.AccountType;
+
 import com.dollarsbank.model.Customer;
 import com.dollarsbank.model.Transactions;
 import com.dollarsbank.model.Transactions.TransactionType;
