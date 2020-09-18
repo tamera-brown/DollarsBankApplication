@@ -8,11 +8,6 @@ import java.util.Scanner;
 import com.dollarsbank.service.CustomerService;
 
 
-
-
-
-
-
 public class DollarsBankApplication {
 	
 
@@ -53,6 +48,8 @@ public class DollarsBankApplication {
 					
 				default:
 					System.out.println("Invail option!!!. Please try again");
+					Menu(option);
+					break;
 					
 					
 				}
@@ -75,9 +72,22 @@ public class DollarsBankApplication {
 		 
 	        choice = option.nextInt();
 	        switch (choice) {
+	        case 1:
+	        	CustomerService.deposit(option);
+	        	CustomerMenu(option);
+	        	break;
+	        case 2:
+	        	CustomerService.withdraw(option);
+	        	CustomerMenu(option);
+	        	break;
+	        case 4:
+	        	CustomerService.recentTransactions();
+	        	CustomerMenu(option);
+	        	break;
 			case 6: 
 				System.out.println("Sucessfully Signed Out");
 				Menu(option);
+				break;
 				
 			
 			default:
