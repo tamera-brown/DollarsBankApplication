@@ -1,11 +1,10 @@
 package com.dollarsbank.application;
 
-
-
 import java.util.Scanner;
 
 
 import com.dollarsbank.service.CustomerService;
+
 
 
 public class DollarsBankApplication {

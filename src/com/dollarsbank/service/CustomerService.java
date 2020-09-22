@@ -3,6 +3,8 @@ package com.dollarsbank.service;
 import java.util.HashMap;
 import java.util.Scanner;
 import java.util.Stack;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import com.dollarsbank.model.Account;
 
@@ -30,7 +32,12 @@ public static void createAccount(Scanner info) {
 	String phonenum;
 	String customerId;
 	String password;
-	
+	Pattern phoneNumberRegex= Pattern.compile("^\\(\\d{3}\\)\\s?\\d{3}-\\d{4}$");
+	Pattern addressRegex = Pattern.compile("^\\d+ [A-Z][a-z]* (Street|Avenue), [A-Z][a-z]*, [A-Z]{2} \\d{5}$");
+	Pattern passwordRegex = Pattern.compile("(?=.*[a-z])(?=.*[@#$%!^&])(?=.*[A-Z]).{8}");
+    boolean validPhonenum;
+    boolean validAddress;
+    boolean validPassword;
 
 	
 	Transactions Newtransaction = new Transactions();
@@ -49,24 +56,57 @@ public static void createAccount(Scanner info) {
         System.out.println("Customer Address: ");
          address = info.nextLine();
          System.out.println(address);
+         Matcher addressMatcher=addressRegex.matcher(address);
+         validAddress=addressMatcher.matches();
+         
+         while(validAddress==false) {
+        	 System.out.println("Invalid Address. Try again");
+        	 System.out.println("Customer Address");
+             address = info.nextLine();
+             addressMatcher= addressRegex.matcher(address);
+             validAddress= addressMatcher.matches();
+         }
+         
        
          System.out.println("Customer Contact Number");
          phonenum = info.nextLine();
-         System.out.println(phonenum);
-         System.out.println("User Id");
+         System.out.println(phonenum); 
+         Matcher phoneMatcher = phoneNumberRegex.matcher(phonenum);
+         validPhonenum= phoneMatcher.matches();
          
          
+         while(validPhonenum==false) {
+        	
+        	 System.out.println("Invalid Phone Number. Try again");
+        	 System.out.println("Customer Contact Number");
+             phonenum = info.nextLine();
+             phoneMatcher = phoneNumberRegex.matcher(phonenum);
+             validPhonenum= phoneMatcher.matches();
+         }
+        
+         
+         System.out.println("Customer ID");
           customerId = info.nextLine();
           System.out.println(customerId);
           System.out.println("Password: 8 Characters With Lower,Upper & Special");
           password = info.nextLine();
           System.out.println(password);
+          Matcher passwordMatcher =passwordRegex.matcher(password);
+          validPassword=passwordMatcher.matches();
+          while(validPassword==false) {
+        	  
+        	  System.out.println("Invalid Password. Try again");
+         	 System.out.println("Password");
+              password = info.nextLine();
+              passwordMatcher = passwordRegex.matcher(password);
+              validPassword= passwordMatcher.matches();
+          }
           System.out.println("Initial Deposit Amount");
           
           initamount = info.nextDouble();
           
           while(initamount < 0) {
-        	  System.out.println("Cannot be negive!");
+        	  System.out.println("Cannot be negative!");
         	  System.out.println("Initial Deposit Amount");
               
               initamount = info.nextDouble();
@@ -110,22 +150,20 @@ public static void login(Scanner info) {
     System.out.println("Password: ");
    
         password = info.nextLine();
+        
+        Customer found = customers.get(customerId);
     
-        if(!customers.containsKey(customerId)) {
-            System.out.println("Invalid Credentials. Try again!");
+        while(!customers.containsKey(customerId) || !password.equals(found.getPassword()) ) {
+            System.out.println("Invalid CutomerId or Password. Try again!");
             login(info);
-        } else {
-            Customer found = customers.get(customerId);
-            if(!password.equals(found.getPassword())) {
-                System.out.println("Invalid Password. Try again!");
-            } else {
+        }
             	 System.out.println("Login Success");
-            		DollarsBankApplication.CustomerMenu(info);
-            }
+            	DollarsBankApplication.CustomerMenu(info);
+            
 
     info.close();
 }
-}
+
 public static void deposit(Scanner num) {
 	Transactions Newtransaction = new Transactions();
 	
